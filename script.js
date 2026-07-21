@@ -403,7 +403,7 @@ function criarMod3() {
     div.appendChild(campoNumero('*VEÍCULOS NOTIFICADOS*', 'm3_notificados'));
     div.appendChild(campoNumero('*VEÍCULOS APREENDIDOS*', 'm3_apreendidos'));
     div.appendChild(campoNumero('*PESSOAS CONDUZIDAS*', 'm3_conduzidas'));
-    div.appendChild(campoNumero('*PESSOAS PRESAS*', 'm3_presas'));
+    div.appendChild(campoNumero('*FLAGRANTES*', 'm3_flagrantes'));
     div.appendChild(campo('*MATERIAL APREENDIDO*', 'm3_material'));
     div.appendChild(campo('*OBSERVAÇÃO*', 'm3_obs', 'textarea'));
     return div;
