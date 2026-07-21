@@ -376,15 +376,15 @@ function criarMod1() {
 function criarMod2() {
     const div = document.createElement('div');
     div.className = 'section-card';
-    div.appendChild(campoData('DATA', 'm2_data'));
-    div.appendChild(campoHora('HORÁRIO', 'm2_horaIni'));
-    div.appendChild(campo('TIPO DE SERVIÇO (OPERAÇÃO/EXTRA)', 'm2_tipo'));
-    div.appendChild(campo('RESPONSÁVEL', 'm2_responsavel'));
-    div.appendChild(campo('LOCAL', 'm2_local'));
-    div.appendChild(campoNumero('QTD DE PATRULHAS', 'm2_patrulhas'));
-    div.appendChild(campoNumero('QTD DE POLICIAIS', 'm2_policiais'));
-    div.appendChild(campoNumero('QTD DE VTR', 'm2_vtr'));
-    div.appendChild(campo('OBSERVAÇÃO', 'm2_obs', 'textarea'));
+    div.appendChild(campoData('*DATA*', 'm2_data'));
+    div.appendChild(campoHora('*HORÁRIO*', 'm2_horaIni'));
+    div.appendChild(campo('*TIPO DE SERVIÇO* (OPERAÇÃO/EXTRA)', 'm2_tipo'));
+    div.appendChild(campo('*RESPONSÁVEL*', 'm2_responsavel'));
+    div.appendChild(campo('*LOCAL*', 'm2_local'));
+    div.appendChild(campoNumero('*QTD DE PATRULHAS*', 'm2_patrulhas'));
+    div.appendChild(campoNumero('*QTD DE POLICIAIS*', 'm2_policiais'));
+    div.appendChild(campoNumero('*QTD DE VTR*', 'm2_vtr'));
+    div.appendChild(campo('*OBSERVAÇÃO*', 'm2_obs', 'textarea'));
     return div;
 }
 
