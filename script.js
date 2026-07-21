@@ -7,7 +7,7 @@ const dataFormatada = `${dia}/${mes}/${ano}`;
 
 // ========= 13 MÓDULOS =========
 const modulos = [
-    { id: 'mod1', nome: '*COORDENADOR DE SERVIÇO*', icone: 'fa-user-tie' },
+    { id: 'mod1', nome: '1.COORDENADOR DE SERVIÇO', icone: 'fa-user-tie' },
     { id: 'mod2', nome: '2. APRESENTAÇÃO', icone: 'fa-clipboard-list' },
     { id: 'mod3', nome: '3. PRODUTIVIDADE', icone: 'fa-chart-line' },
     { id: 'mod4', nome: '4. ESCOLTA DE EMERGÊNCIA', icone: 'fa-ambulance' },
