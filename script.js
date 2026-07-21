@@ -592,14 +592,21 @@ function enviarModulo(modId) {
             }
         });
     } else if (modId === 'mod3') {
-        const campos = document.querySelectorAll('#formularioContainer input:not([type="button"]), #formularioContainer textarea');
-        campos.forEach(campo => {
-            const label = campo.closest('.field-group')?.querySelector('label')?.textContent || '';
-            if (label) {
-                const valor = campo.value || '-';
-                relatorio += `${label}: ${valor}\n`;
-            }
-        });
+        relatorio += `*DATA*: ${document.getElementById('m3_data').value || '-'}\n`;
+        relatorio += `*HORÁRIO*: ${document.getElementById('m3_hora').value || '-'}\n`;
+        relatorio += `*TIPO DE SERVIÇO* (DIÁRIO/OPERAÇÃO/EXTRA): ${document.getElementById('m3_tipo').value || '-'}\n`;
+        relatorio += `*PESSOAS ABORDADAS*: ${document.getElementById('m3_aborddas').value || '-'}\n`;
+        relatorio += `*VEÍCULOS 4 RODAS*: ${getPairs('m3_veic4') || '-'}\n`;
+        relatorio += `*VEÍCULOS 2 RODAS*: ${getPairs('m3_veic2') || '-'}\n`;
+        relatorio += `*ÔNIBUS*: ${getPairs('m3_onibus') || '-'}\n`;
+        relatorio += `*PONTOS COMERCIAIS*: ${getPairs('m3_pontos') || '-'}\n`;
+        relatorio += `*VEÍCULOS NOTIFICADOS*: ${getPairs('m3_notificados') || '-'}\n`;
+        relatorio += `*VEÍCULOS APREENDIDOS*: ${getPairs('m3_apreendidos') || '-'}\n`;
+        relatorio += `*PESSOAS CONDUZIDAS*: ${getPairs('m3_conduzidas') || '-'}\n`;
+        relatorio += `*PESSOAS PRESAS*: ${getPairs('m3_presas') || '-'}\n`;
+        relatorio += `*MATERIAL APREENDIDO*: ${getPairs('m3_material') || '-'}\n`;
+        relatorio += `*OBSERVAÇÃO*: ${document.getElementById('m3_obs').value || '-'}\n`;
+   
     } else if (modId === 'mod4') {
         relatorio += `*DATA*: ${document.getElementById('m4_data').value || '-'}\n`;
         relatorio += `*HORÁRIO*: ${document.getElementById('m4_hora').value || '-'}\n`;
