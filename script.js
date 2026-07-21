@@ -606,7 +606,6 @@ function enviarModulo(modId) {
         relatorio += `*PESSOAS PRESAS*: ${getPairs('m3_presas') || '-'}\n`;
         relatorio += `*MATERIAL APREENDIDO*: ${getPairs('m3_material') || '-'}\n`;
         relatorio += `*OBSERVAÇÃO*: ${document.getElementById('m3_obs').value || '-'}\n`;
-   
     } else if (modId === 'mod4') {
         relatorio += `*DATA*: ${document.getElementById('m4_data').value || '-'}\n`;
         relatorio += `*HORÁRIO*: ${document.getElementById('m4_hora').value || '-'}\n`;
