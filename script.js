@@ -359,6 +359,7 @@ function criarMod1() {
     div.appendChild(campo('MOTORISTA', 'm1_motorista'));
     div.appendChild(criarListaNome('RECEPÇÃO', 'm1_recepcaoList', 'm1_recepcaoInput'));
     div.appendChild(campo('VTR', 'm1_vtr'));
+    div.appendChild(campoNumero('QTD DE PM\'S NA VTR', 'm1_qtdPmVtr')); // NOVO CAMPO
     div.appendChild(campoNumero('HGCA QTD PM\'S 7H-19H', 'm1_hgcaDia'));
     div.appendChild(campoNumero('HGCA QTD PM\'S 19H-7H', 'm1_hgcaNoite'));
     div.appendChild(campoNumero('ESCOLTA QTD PM\'S', 'm1_escolta'));
@@ -391,20 +392,20 @@ function criarMod2() {
 function criarMod3() {
     const div = document.createElement('div');
     div.className = 'section-card';
-    div.appendChild(campoData('DATA', 'm3_data'));
-    div.appendChild(campoHora('HORÁRIO', 'm3_horaIni'));
-    div.appendChild(campo('TIPO DE SERVIÇO (DIÁRIO/OPERAÇÃO/EXTRA)', 'm3_tipo'));
-    div.appendChild(campoNumero('PESSOAS ABORDADAS', 'm3_abordadas'));
-    div.appendChild(campoNumero('VEÍCULOS 4 RODAS', 'm3_veic4'));
-    div.appendChild(campoNumero('VEÍCULOS 2 RODAS', 'm3_veic2'));
-    div.appendChild(campoNumero('ÔNIBUS', 'm3_onibus'));
-    div.appendChild(campoNumero('PONTOS COMERCIAIS', 'm3_pontos'));
-    div.appendChild(campoNumero('VEÍCULOS NOTIFICADOS', 'm3_notificados'));
-    div.appendChild(campoNumero('VEÍCULOS APREENDIDOS', 'm3_apreendidos'));
-    div.appendChild(campoNumero('PESSOAS CONDUZIDAS', 'm3_conduzidas'));
-    div.appendChild(campoNumero('PESSOAS PRESAS', 'm3_presas'));
-    div.appendChild(campo('MATERIAL APREENDIDO', 'm3_material'));
-    div.appendChild(campo('OBSERVAÇÃO', 'm3_obs', 'textarea'));
+    div.appendChild(campoData('*DATA*', 'm3_data'));
+    div.appendChild(campoHora('*HORÁRIO*', 'm3_horaIni'));
+    div.appendChild(campo('*TIPO DE SERVIÇO* (DIÁRIO/OPERAÇÃO/EXTRA)', 'm3_tipo'));
+    div.appendChild(campoNumero('*PESSOAS ABORDADAS*', 'm3_abordadas'));
+    div.appendChild(campoNumero('*VEÍCULOS 4 RODAS*', 'm3_veic4'));
+    div.appendChild(campoNumero('*VEÍCULOS 2 RODAS*', 'm3_veic2'));
+    div.appendChild(campoNumero('*ÔNIBUS*', 'm3_onibus'));
+    div.appendChild(campoNumero('*PONTOS COMERCIAIS*', 'm3_pontos'));
+    div.appendChild(campoNumero('*VEÍCULOS NOTIFICADOS*', 'm3_notificados'));
+    div.appendChild(campoNumero('*VEÍCULOS APREENDIDOS*', 'm3_apreendidos'));
+    div.appendChild(campoNumero('*PESSOAS CONDUZIDAS*', 'm3_conduzidas'));
+    div.appendChild(campoNumero('*PESSOAS PRESAS*', 'm3_presas'));
+    div.appendChild(campo('*MATERIAL APREENDIDO*', 'm3_material'));
+    div.appendChild(campo('*OBSERVAÇÃO*', 'm3_obs', 'textarea'));
     return div;
 }
 
@@ -571,6 +572,7 @@ function enviarModulo(modId) {
         relatorio += `*MOTORISTA*: ${document.getElementById('m1_motorista').value || '-'}\n`;
         relatorio += `*RECEPÇÃO*: ${getNames('m1_recepcaoList') || '-'}\n`;
         relatorio += `*VTR*: ${document.getElementById('m1_vtr').value || '-'}\n`;
+        relatorio += `*QTD DE PM'S NA VTR*: ${document.getElementById('m1_qtdPmVtr').value || '-'}\n`; // NOVO CAMPO
         relatorio += `*HGCA QTD PM'S 7H-19H*: ${document.getElementById('m1_hgcaDia').value || '-'}\n`;
         relatorio += `*HGCA QTD PM'S 19H-7H*: ${document.getElementById('m1_hgcaNoite').value || '-'}\n`;
         relatorio += `*ESCOLTA QTD PM'S*: ${document.getElementById('m1_escolta').value || '-'}\n`;
