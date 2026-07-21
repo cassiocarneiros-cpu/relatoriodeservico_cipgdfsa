@@ -366,7 +366,7 @@ function criarMod1() {
     div.appendChild(campoNumero('GIRP QTD PM\'S', 'm1_girpQtd'));
     div.appendChild(campo('MOTOS VTR', 'm1_motoVtr'));
     div.appendChild(campoNumero('MOTOCICLISTAS QTD PM\'S', 'm1_motoQtd'));
-    div.appendChild(campoNumero('*VTR 4 RODAS', 'm1_vtr4'));
+    div.appendChild(campoNumero('VTR 4 RODAS', 'm1_vtr4'));
     div.appendChild(campoNumero('VTR 2 RODAS', 'm1_vtr2'));
     div.appendChild(campoNumero('TOTAL POLICIAIS', 'm1_total'));
     div.appendChild(campo('OBSERVAÇÃO', 'm1_obs', 'textarea'));
