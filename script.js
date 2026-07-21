@@ -557,7 +557,7 @@ function criarMod13() {
 
 // ========= ENVIAR MÓDULO =========
 function enviarModulo(modId) {
-    let relatorio = `*POLICIA MILITAR DA BAHIA*\n*CPRL - LESTE*\n*CIPGD/FEIRA DE SANTANA*\n\n`;
+    let relatorio = `*POLICIA MILITAR DA BAHIA*\n*CPRL*\n*CIPGD/FEIRA DE SANTANA*\n\n`;
     const modulo = modulos.find(m => m.id === modId);
     relatorio += `*${modulo.nome}*\n\n`;
 
