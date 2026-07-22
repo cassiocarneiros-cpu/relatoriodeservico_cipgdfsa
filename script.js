@@ -353,7 +353,7 @@ function criarMod1() {
     div.appendChild(campoData('DATA', 'm1_data'));
     div.appendChild(campoHora('HORÁRIO', 'm1_horaIni'));
     div.appendChild(campo('COORDENADOR', 'm1_coordenador'));
-    div.appendChild(campo('TELEFONE', 'm1_telefone')); // NOVO CAMPO
+    div.appendChild(campo('TELEFONE', 'm1_telefone'));
     div.appendChild(campo('COMANDANTE DA GUARDA', 'm1_comandante'));
     div.appendChild(campo('AUXILIAR DA GUARDA', 'm1_auxiliar'));
     div.appendChild(campo('SALA DE MEIOS', 'm1_salaMeios'));
@@ -396,6 +396,8 @@ function criarMod3() {
     div.appendChild(campoData('*DATA*', 'm3_data'));
     div.appendChild(campoHora('*HORÁRIO*', 'm3_horaIni'));
     div.appendChild(campo('*TIPO DE SERVIÇO* (DIÁRIO/OPERAÇÃO/EXTRA)', 'm3_tipo'));
+    div.appendChild(campoNumero('*QTD DE PM\'S EMPREGADOS*', 'm3_pmsEmpregados')); // NOVO CAMPO
+    div.appendChild(campoNumero('*QTD DE VTR\'S EMPREGADAS*', 'm3_vtrEmpregadas')); // NOVO CAMPO
     div.appendChild(campoNumero('*PESSOAS ABORDADAS*', 'm3_abordadas'));
     div.appendChild(campoNumero('*VEÍCULOS 4 RODAS*', 'm3_veic4'));
     div.appendChild(campoNumero('*VEÍCULOS 2 RODAS*', 'm3_veic2'));
@@ -415,7 +417,7 @@ function criarMod4() {
     div.className = 'section-card';
     div.appendChild(campoData('DATA', 'm4_data'));
     div.appendChild(campoHora('HORÁRIO', 'm4_hora'));
-    div.appendChild(campo('EFETIVO EMPREGADO', 'm4_conducao')); // ALTERADO
+    div.appendChild(campo('EFETIVO EMPREGADO', 'm4_conducao'));
     div.appendChild(campoNumero('QTD DE ESCOLTADOS', 'm4_qtd'));
     div.appendChild(criarListaEscolta('ESCOLTADOS', 'm4_escoltaList', 'm4_nomeInput', 'm4_sitInput', 'm4_localInput'));
     div.appendChild(campo('OBSERVAÇÃO', 'm4_obs', 'textarea'));
@@ -428,11 +430,11 @@ function criarMod5() {
     div.appendChild(campoData('DATA', 'm5_data'));
     div.appendChild(campoHora('HORÁRIO', 'm5_hora'));
     div.appendChild(campo('CIDADE', 'm5_cidade'));
-    div.appendChild(campo('ENDEREÇO DA OCORRÊNCIA', 'm5_endereco')); // ALTERADO
+    div.appendChild(campo('ENDEREÇO DA OCORRÊNCIA', 'm5_endereco'));
     div.appendChild(criarListaOcorrencia('PESSOAS ENVOLVIDAS', 'm5_ocorrenciaList', 'm5_nomeInput', 'm5_rgInput', 'm5_maeInput'));
     div.appendChild(campo('TIPO', 'm5_tipo'));
-    div.appendChild(campo('RECURSOS EMPREGADOS', 'm5_recursos')); // NOVO CAMPO
-    div.appendChild(campo('MATERIAIS APREENDIDOS', 'm5_materiais')); // NOVO CAMPO
+    div.appendChild(campo('RECURSOS EMPREGADOS', 'm5_recursos'));
+    div.appendChild(campo('MATERIAIS APREENDIDOS', 'm5_materiais'));
     div.appendChild(campo('RESUMO', 'm5_resumo', 'textarea'));
     div.appendChild(campo('FONTE', 'm5_fonte'));
     return div;
@@ -498,8 +500,8 @@ function criarMod9() {
     div.appendChild(campoData('DATA', 'm9_data'));
     div.appendChild(campoHora('HORÁRIO', 'm9_horaIni'));
     div.appendChild(campo('LOCAL', 'm9_local'));
-    div.appendChild(criarListaNome('EFETIVO EMPREGADO', 'm9_efetivoList', 'm9_efetivoInput')); // ALTERADO
-    div.appendChild(campoNumero('QTD DE ESCOLTADOS', 'm9_qtdEscoltados')); // NOVO CAMPO
+    div.appendChild(criarListaNome('EFETIVO EMPREGADO', 'm9_efetivoList', 'm9_efetivoInput'));
+    div.appendChild(campoNumero('QTD DE ESCOLTADOS', 'm9_qtdEscoltados'));
     div.appendChild(campo('SAÍDA', 'm9_saida'));
     div.appendChild(campo('CHEGADA', 'm9_chegada'));
     div.appendChild(campo('OBSERVAÇÃO', 'm9_obs', 'textarea'));
@@ -568,9 +570,9 @@ function enviarModulo(modId) {
     // Coletar campos na ordem correta para cada módulo
     if (modId === 'mod1') {
         relatorio += `*DATA*: ${document.getElementById('m1_data').value || '-'}\n`;
-        relatorio += `*HORÁRIO*: ${document.getElementById('m1_horaIni').value || '-'}\n\n`; // ESPAÇO ADICIONADO
+        relatorio += `*HORÁRIO*: ${document.getElementById('m1_horaIni').value || '-'}\n\n`;
         relatorio += `*COORDENADOR*: ${document.getElementById('m1_coordenador').value || '-'}\n`;
-        relatorio += `*TELEFONE*: ${document.getElementById('m1_telefone').value || '-'}\n\n`; // NOVO CAMPO COM ESPAÇO
+        relatorio += `*TELEFONE*: ${document.getElementById('m1_telefone').value || '-'}\n\n`;
         relatorio += `*COMANDANTE DA GUARDA*: ${document.getElementById('m1_comandante').value || '-'}\n`;
         relatorio += `*AUXILIAR DA GUARDA*: ${document.getElementById('m1_auxiliar').value || '-'}\n`;
         relatorio += `*SALA DE MEIOS*: ${document.getElementById('m1_salaMeios').value || '-'}\n`;
@@ -599,18 +601,26 @@ function enviarModulo(modId) {
             }
         });
     } else if (modId === 'mod3') {
-        const campos = document.querySelectorAll('#formularioContainer input:not([type="button"]), #formularioContainer textarea');
-        campos.forEach(campo => {
-            const label = campo.closest('.field-group')?.querySelector('label')?.textContent || '';
-            if (label) {
-                const valor = campo.value || '-';
-                relatorio += `${label}: ${valor}\n`;
-            }
-        });
+        relatorio += `*DATA*: ${document.getElementById('m3_data').value || '-'}\n`;
+        relatorio += `*HORÁRIO*: ${document.getElementById('m3_horaIni').value || '-'}\n`;
+        relatorio += `*TIPO DE SERVIÇO*: ${document.getElementById('m3_tipo').value || '-'}\n`;
+        relatorio += `*QTD DE PM'S EMPREGADOS*: ${document.getElementById('m3_pmsEmpregados').value || '-'}\n`; // NOVO CAMPO
+        relatorio += `*QTD DE VTR'S EMPREGADAS*: ${document.getElementById('m3_vtrEmpregadas').value || '-'}\n`; // NOVO CAMPO
+        relatorio += `*PESSOAS ABORDADAS*: ${document.getElementById('m3_abordadas').value || '-'}\n`;
+        relatorio += `*VEÍCULOS 4 RODAS*: ${document.getElementById('m3_veic4').value || '-'}\n`;
+        relatorio += `*VEÍCULOS 2 RODAS*: ${document.getElementById('m3_veic2').value || '-'}\n`;
+        relatorio += `*ÔNIBUS*: ${document.getElementById('m3_onibus').value || '-'}\n`;
+        relatorio += `*PONTOS COMERCIAIS*: ${document.getElementById('m3_pontos').value || '-'}\n`;
+        relatorio += `*VEÍCULOS NOTIFICADOS*: ${document.getElementById('m3_notificados').value || '-'}\n`;
+        relatorio += `*VEÍCULOS APREENDIDOS*: ${document.getElementById('m3_apreendidos').value || '-'}\n`;
+        relatorio += `*PESSOAS CONDUZIDAS*: ${document.getElementById('m3_conduzidas').value || '-'}\n`;
+        relatorio += `*FLAGRANTES*: ${document.getElementById('m3_flagrantes').value || '-'}\n`;
+        relatorio += `*MATERIAL APREENDIDO*: ${document.getElementById('m3_material').value || '-'}\n`;
+        relatorio += `*OBSERVAÇÃO*: ${document.getElementById('m3_obs').value || '-'}\n`;
     } else if (modId === 'mod4') {
         relatorio += `*DATA*: ${document.getElementById('m4_data').value || '-'}\n`;
         relatorio += `*HORÁRIO*: ${document.getElementById('m4_hora').value || '-'}\n`;
-        relatorio += `*EFETIVO EMPREGADO*: ${document.getElementById('m4_conducao').value || '-'}\n`; // ALTERADO
+        relatorio += `*EFETIVO EMPREGADO*: ${document.getElementById('m4_conducao').value || '-'}\n`;
         relatorio += `*QTD DE ESCOLTADOS*: ${document.getElementById('m4_qtd').value || '-'}\n`;
         relatorio += `*ESCOLTADOS*: ${getPairs('m4_escoltaList') || '-'}\n`;
         relatorio += `*OBSERVAÇÃO*: ${document.getElementById('m4_obs').value || '-'}\n`;
@@ -618,11 +628,11 @@ function enviarModulo(modId) {
         relatorio += `*DATA*: ${document.getElementById('m5_data').value || '-'}\n`;
         relatorio += `*HORÁRIO*: ${document.getElementById('m5_hora').value || '-'}\n`;
         relatorio += `*CIDADE*: ${document.getElementById('m5_cidade').value || '-'}\n`;
-        relatorio += `*ENDEREÇO DA OCORRÊNCIA*: ${document.getElementById('m5_endereco').value || '-'}\n`; // ALTERADO
+        relatorio += `*ENDEREÇO DA OCORRÊNCIA*: ${document.getElementById('m5_endereco').value || '-'}\n`;
         relatorio += `*PESSOAS ENVOLVIDAS*: ${getPairs('m5_ocorrenciaList') || '-'}\n`;
         relatorio += `*TIPO*: ${document.getElementById('m5_tipo').value || '-'}\n`;
-        relatorio += `*RECURSOS EMPREGADOS*: ${document.getElementById('m5_recursos').value || '-'}\n`; // NOVO CAMPO
-        relatorio += `*MATERIAIS APREENDIDOS*: ${document.getElementById('m5_materiais').value || '-'}\n`; // NOVO CAMPO
+        relatorio += `*RECURSOS EMPREGADOS*: ${document.getElementById('m5_recursos').value || '-'}\n`;
+        relatorio += `*MATERIAIS APREENDIDOS*: ${document.getElementById('m5_materiais').value || '-'}\n`;
         relatorio += `*RESUMO*: ${document.getElementById('m5_resumo').value || '-'}\n`;
         relatorio += `*FONTE*: ${document.getElementById('m5_fonte').value || '-'}\n`;
     } else if (modId === 'mod6') {
@@ -668,8 +678,8 @@ function enviarModulo(modId) {
         relatorio += `*DATA*: ${document.getElementById('m9_data').value || '-'}\n`;
         relatorio += `*HORÁRIO*: ${document.getElementById('m9_horaIni').value || '-'}\n`;
         relatorio += `*LOCAL*: ${document.getElementById('m9_local').value || '-'}\n`;
-        relatorio += `*EFETIVO EMPREGADO*: ${getNames('m9_efetivoList') || '-'}\n`; // ALTERADO
-        relatorio += `*QTD DE ESCOLTADOS*: ${document.getElementById('m9_qtdEscoltados').value || '-'}\n`; // NOVO CAMPO
+        relatorio += `*EFETIVO EMPREGADO*: ${getNames('m9_efetivoList') || '-'}\n`;
+        relatorio += `*QTD DE ESCOLTADOS*: ${document.getElementById('m9_qtdEscoltados').value || '-'}\n`;
         relatorio += `*SAÍDA*: ${document.getElementById('m9_saida').value || '-'}\n`;
         relatorio += `*CHEGADA*: ${document.getElementById('m9_chegada').value || '-'}\n`;
         relatorio += `*OBSERVAÇÃO*: ${document.getElementById('m9_obs').value || '-'}\n`;
