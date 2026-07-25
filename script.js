@@ -13,7 +13,7 @@ const modulos = [
     { id: 'mod4', nome: 'ESCOLTA DE EMERGÊNCIA', icone: 'fa-ambulance' },
     { id: 'mod5', nome: 'OCORRÊNCIA', icone: 'fa-exclamation-triangle' },
     { id: 'mod6', nome: '1º PELOTÃO (GUARDA/MEIOS)', icone: 'fa-shield-alt' },
-    { id: 'mod7', nome: 'VIATURA DO 1º PELOTÃO', icone: 'fa-truck' },
+    { id: 'mod7', nome: '1º PELOTÃO (VIATURA)', icone: 'fa-truck' },
     { id: 'mod8', nome: '2º PELOTÃO (SERRINHA)', icone: 'fa-calendar-alt' },
     { id: 'mod9', nome: '2º PELOTÃO (ESCOLTA SERRINHA)', icone: 'fa-people-arrows' },
     { id: 'mod10', nome: '3º PELOTÃO (HGCA)', icone: 'fa-hospital-alt' },
