@@ -489,17 +489,18 @@ function criarMod8() {
     return div;
 }
 
+// ========= MÓDULO 9 - 2º PELOTÃO (ESCOLTA SERRINHA) - MODIFICADO =========
 function criarMod9() {
     const div = document.createElement('div');
     div.className = 'section-card';
     div.appendChild(campoData('DATA', 'm9_data'));
     div.appendChild(campoHora('HORÁRIO', 'm9_horaIni'));
-    div.appendChild(campo('EFETIVO', 'm9_efetivo'));
+    div.appendChild(campo('LOCAL', 'm9_local')); // MOVIDO PARA DEPOIS DE HORÁRIO
+    div.appendChild(criarListaNome('EFETIVO', 'm9_efetivoList', 'm9_efetivoInput')); // ALTERADO PARA LISTA
     div.appendChild(campo('VEICULO UTILIZADO', 'm9_veiculo'));
-    div.appendChild(campo('LOCAL', 'm9_local'));
     div.appendChild(campoNumero('QTD DE ESCOLTADOS', 'm9_qtdEscoltados'));
     div.appendChild(campo('SAÍDA', 'm9_saida'));
-    div.appendChild(campo('CHEGADA', 'm9_chegada'));
+    // CAMPO "CHEGADA" REMOVIDO
     div.appendChild(campo('OBSERVAÇÃO', 'm9_obs', 'textarea'));
     return div;
 }
@@ -515,17 +516,18 @@ function criarMod10() {
     return div;
 }
 
+// ========= MÓDULO 11 - 4º PELOTÃO (ESCOLTA SEDE) - MODIFICADO =========
 function criarMod11() {
     const div = document.createElement('div');
     div.className = 'section-card';
     div.appendChild(campoData('DATA', 'm11_data'));
     div.appendChild(campoHora('HORÁRIO', 'm11_horaIni'));
-    div.appendChild(campo('EFETIVO', 'm11_efetivo'));
+    div.appendChild(campo('LOCAL', 'm11_local')); // MOVIDO PARA DEPOIS DE HORÁRIO
+    div.appendChild(criarListaNome('EFETIVO', 'm11_efetivoList', 'm11_efetivoInput')); // ALTERADO PARA LISTA
     div.appendChild(campo('VEICULO UTILIZADO', 'm11_veiculo'));
-    div.appendChild(campo('LOCAL', 'm11_local'));
     div.appendChild(campoNumero('QTD DE ESCOLTADOS', 'm11_qtdEscoltados'));
     div.appendChild(campo('SAÍDA', 'm11_saida'));
-    div.appendChild(campo('CHEGADA', 'm11_chegada'));
+    // CAMPO "CHEGADA" REMOVIDO
     div.appendChild(campo('OBSERVAÇÃO', 'm11_obs', 'textarea'));
     return div;
 }
@@ -732,12 +734,12 @@ function enviarModulo(modId) {
     } else if (modId === 'mod9') {
         addCampo('DATA', document.getElementById('m9_data')?.value);
         addCampo('HORÁRIO', document.getElementById('m9_horaIni')?.value);
-        addCampo('EFETIVO', document.getElementById('m9_efetivo')?.value);
-        addCampo('VEICULO UTILIZADO', document.getElementById('m9_veiculo')?.value);
         addCampo('LOCAL', document.getElementById('m9_local')?.value);
+        addLista('EFETIVO', 'm9_efetivoList'); // ALTERADO PARA LISTA
+        addCampo('VEICULO UTILIZADO', document.getElementById('m9_veiculo')?.value);
         addCampo('QTD DE ESCOLTADOS', document.getElementById('m9_qtdEscoltados')?.value);
         addCampo('SAÍDA', document.getElementById('m9_saida')?.value);
-        addCampo('CHEGADA', document.getElementById('m9_chegada')?.value);
+        // CAMPO "CHEGADA" REMOVIDO
         addCampo('OBSERVAÇÃO', document.getElementById('m9_obs')?.value);
     } else if (modId === 'mod10') {
         addCampo('DATA', document.getElementById('m10_data')?.value);
@@ -748,12 +750,12 @@ function enviarModulo(modId) {
     } else if (modId === 'mod11') {
         addCampo('DATA', document.getElementById('m11_data')?.value);
         addCampo('HORÁRIO', document.getElementById('m11_horaIni')?.value);
-        addCampo('EFETIVO', document.getElementById('m11_efetivo')?.value);
-        addCampo('VEICULO UTILIZADO', document.getElementById('m11_veiculo')?.value);
         addCampo('LOCAL', document.getElementById('m11_local')?.value);
+        addLista('EFETIVO', 'm11_efetivoList'); // ALTERADO PARA LISTA
+        addCampo('VEICULO UTILIZADO', document.getElementById('m11_veiculo')?.value);
         addCampo('QTD DE ESCOLTADOS', document.getElementById('m11_qtdEscoltados')?.value);
         addCampo('SAÍDA', document.getElementById('m11_saida')?.value);
-        addCampo('CHEGADA', document.getElementById('m11_chegada')?.value);
+        // CAMPO "CHEGADA" REMOVIDO
         addCampo('OBSERVAÇÃO', document.getElementById('m11_obs')?.value);
     } else if (modId === 'mod12') {
         addCampo('DATA', document.getElementById('m12_data')?.value);
