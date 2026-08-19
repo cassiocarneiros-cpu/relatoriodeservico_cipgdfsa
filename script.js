@@ -435,11 +435,18 @@ function criarMod5() {
     return div;
 }
 
+// ========= MÓDULO 6 - 1º PELOTÃO (GUARDA/MEIOS) - MODIFICADO =========
 function criarMod6() {
     const div = document.createElement('div');
     div.className = 'section-card';
     div.appendChild(campoData('DATA', 'm6_data'));
     div.appendChild(campoHora('HORÁRIO', 'm6_horaIni'));
+    // ADICIONANDO ESPAÇO VISUAL (margem extra)
+    const spacer = document.createElement('div');
+    spacer.style.marginBottom = '8px';
+    div.appendChild(spacer);
+    div.appendChild(campo('COORDENADOR DE SERVIÇO', 'm6_coordenador'));
+    div.appendChild(campo('TELEFONE', 'm6_telefone'));
     div.appendChild(campo('COMANDANTE DA GUARDA', 'm6_comandante'));
     div.appendChild(campo('AUXILIAR DA GUARDA', 'm6_auxiliar'));
     div.appendChild(criarListaNome('RECEPÇÃO', 'm6_recepcaoList', 'm6_recepcaoInput'));
@@ -489,18 +496,16 @@ function criarMod8() {
     return div;
 }
 
-// ========= MÓDULO 9 - 2º PELOTÃO (ESCOLTA SERRINHA) - MODIFICADO =========
 function criarMod9() {
     const div = document.createElement('div');
     div.className = 'section-card';
     div.appendChild(campoData('DATA', 'm9_data'));
     div.appendChild(campoHora('HORÁRIO', 'm9_horaIni'));
-    div.appendChild(campo('LOCAL', 'm9_local')); // MOVIDO PARA DEPOIS DE HORÁRIO
-    div.appendChild(criarListaNome('EFETIVO', 'm9_efetivoList', 'm9_efetivoInput')); // ALTERADO PARA LISTA
+    div.appendChild(campo('LOCAL', 'm9_local'));
+    div.appendChild(criarListaNome('EFETIVO', 'm9_efetivoList', 'm9_efetivoInput'));
     div.appendChild(campo('VEICULO UTILIZADO', 'm9_veiculo'));
     div.appendChild(campoNumero('QTD DE ESCOLTADOS', 'm9_qtdEscoltados'));
     div.appendChild(campo('SAÍDA', 'm9_saida'));
-    // CAMPO "CHEGADA" REMOVIDO
     div.appendChild(campo('OBSERVAÇÃO', 'm9_obs', 'textarea'));
     return div;
 }
@@ -516,18 +521,16 @@ function criarMod10() {
     return div;
 }
 
-// ========= MÓDULO 11 - 4º PELOTÃO (ESCOLTA SEDE) - MODIFICADO =========
 function criarMod11() {
     const div = document.createElement('div');
     div.className = 'section-card';
     div.appendChild(campoData('DATA', 'm11_data'));
     div.appendChild(campoHora('HORÁRIO', 'm11_horaIni'));
-    div.appendChild(campo('LOCAL', 'm11_local')); // MOVIDO PARA DEPOIS DE HORÁRIO
-    div.appendChild(criarListaNome('EFETIVO', 'm11_efetivoList', 'm11_efetivoInput')); // ALTERADO PARA LISTA
+    div.appendChild(campo('LOCAL', 'm11_local'));
+    div.appendChild(criarListaNome('EFETIVO', 'm11_efetivoList', 'm11_efetivoInput'));
     div.appendChild(campo('VEICULO UTILIZADO', 'm11_veiculo'));
     div.appendChild(campoNumero('QTD DE ESCOLTADOS', 'm11_qtdEscoltados'));
     div.appendChild(campo('SAÍDA', 'm11_saida'));
-    // CAMPO "CHEGADA" REMOVIDO
     div.appendChild(campo('OBSERVAÇÃO', 'm11_obs', 'textarea'));
     return div;
 }
@@ -695,6 +698,8 @@ function enviarModulo(modId) {
     } else if (modId === 'mod6') {
         addCampo('DATA', document.getElementById('m6_data')?.value);
         addCampo('HORÁRIO', document.getElementById('m6_horaIni')?.value);
+        addCampo('COORDENADOR DE SERVIÇO', document.getElementById('m6_coordenador')?.value);
+        addCampo('TELEFONE', document.getElementById('m6_telefone')?.value);
         addCampo('COMANDANTE DA GUARDA', document.getElementById('m6_comandante')?.value);
         addCampo('AUXILIAR DA GUARDA', document.getElementById('m6_auxiliar')?.value);
         addLista('RECEPÇÃO', 'm6_recepcaoList');
@@ -735,11 +740,10 @@ function enviarModulo(modId) {
         addCampo('DATA', document.getElementById('m9_data')?.value);
         addCampo('HORÁRIO', document.getElementById('m9_horaIni')?.value);
         addCampo('LOCAL', document.getElementById('m9_local')?.value);
-        addLista('EFETIVO', 'm9_efetivoList'); // ALTERADO PARA LISTA
+        addLista('EFETIVO', 'm9_efetivoList');
         addCampo('VEICULO UTILIZADO', document.getElementById('m9_veiculo')?.value);
         addCampo('QTD DE ESCOLTADOS', document.getElementById('m9_qtdEscoltados')?.value);
         addCampo('SAÍDA', document.getElementById('m9_saida')?.value);
-        // CAMPO "CHEGADA" REMOVIDO
         addCampo('OBSERVAÇÃO', document.getElementById('m9_obs')?.value);
     } else if (modId === 'mod10') {
         addCampo('DATA', document.getElementById('m10_data')?.value);
@@ -751,11 +755,10 @@ function enviarModulo(modId) {
         addCampo('DATA', document.getElementById('m11_data')?.value);
         addCampo('HORÁRIO', document.getElementById('m11_horaIni')?.value);
         addCampo('LOCAL', document.getElementById('m11_local')?.value);
-        addLista('EFETIVO', 'm11_efetivoList'); // ALTERADO PARA LISTA
+        addLista('EFETIVO', 'm11_efetivoList');
         addCampo('VEICULO UTILIZADO', document.getElementById('m11_veiculo')?.value);
         addCampo('QTD DE ESCOLTADOS', document.getElementById('m11_qtdEscoltados')?.value);
         addCampo('SAÍDA', document.getElementById('m11_saida')?.value);
-        // CAMPO "CHEGADA" REMOVIDO
         addCampo('OBSERVAÇÃO', document.getElementById('m11_obs')?.value);
     } else if (modId === 'mod12') {
         addCampo('DATA', document.getElementById('m12_data')?.value);
