@@ -1,6 +1,6 @@
 {
     "name": "CIPGd-FSA Módulos de Relatórios",
-    "short_name": "CIPGd Relatórios",
+    "short_name": "Relatórios - CIPGd",
     "description": "Sistema para preenchimento de relatórios da CIPGd-FSA",
     "start_url": ".",
     "display": "standalone",
