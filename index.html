@@ -17,22 +17,25 @@
 
     <!-- Cabeçalho -->
     <div class="header-pm">
-        <!-- ESCUDO COM IMAGEM (se existir) OU TEXTO (fallback) -->
-        <div class="escudo-container" id="escudoContainer">
-            <div class="escudo-texto" id="escudoTexto">
-                <span>CIA</span>
-                <span>INDEPENDENTE</span>
-                <span>GUARDA</span>
-                <span class="pmba">P M B A</span>
-                <span class="cidade">FEIRA DE SANTANA</span>
+        <div class="escudo-container">
+            <div class="escudo-css">
+                <div class="escudo-topo">
+                    <span class="escudo-linha">CIA</span>
+                    <span class="escudo-linha">INDEPENDENTE</span>
+                    <span class="escudo-linha">GUARDA</span>
+                </div>
+                <div class="escudo-divisor"></div>
+                <div class="escudo-meio">
+                    <span class="escudo-pmba">P M B A</span>
+                </div>
+                <div class="escudo-divisor"></div>
+                <div class="escudo-base">
+                    <span class="escudo-cidade">FEIRA DE SANTANA</span>
+                </div>
             </div>
-            <!-- IMAGEM DO ESCUDO (oculta por padrão, será mostrada se a imagem existir) -->
-            <img src="escudo-pmba.png" alt="Escudo PMBA" class="escudo-imagem" id="escudoImagem" style="display:none;">
         </div>
         <div class="title-group">
-            <div class="title-row">
-                <h1>MÓDULOS DE RELATÓRIOS</h1>
-            </div>
+            <h1>MÓDULOS DE RELATÓRIOS</h1>
             <small>CPRL - LESTE · CIPGD/FEIRA DE SANTANA</small>
         </div>
         <span class="badge-online"><i class="fas fa-circle"></i> Online</span>
@@ -66,26 +69,5 @@
 </div>
 
 <script src="script.js"></script>
-<script>
-    // Verifica se a imagem do escudo existe e a exibe
-    document.addEventListener('DOMContentLoaded', function() {
-        const img = document.getElementById('escudoImagem');
-        const texto = document.getElementById('escudoTexto');
-        
-        // Tenta carregar a imagem
-        const testImg = new Image();
-        testImg.onload = function() {
-            // Se a imagem carregou, mostra a imagem e esconde o texto
-            img.style.display = 'block';
-            texto.style.display = 'none';
-        };
-        testImg.onerror = function() {
-            // Se a imagem não existe, mantém o texto
-            img.style.display = 'none';
-            texto.style.display = 'flex';
-        };
-        testImg.src = 'escudo-pmba.png';
-    });
-</script>
 </body>
 </html>
