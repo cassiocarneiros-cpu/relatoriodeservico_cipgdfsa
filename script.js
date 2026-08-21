@@ -221,7 +221,7 @@ function criarListaEscolta(label, listId, nomeId, sitId, localId) {
     return wrapper;
 }
 
-// Lista para ocorrência (Nome, RG/CPF) - sem nome da mãe
+// Lista para ocorrência (Nome, RG/CPF)
 function criarListaOcorrencia(label, listId, nomeId, rgId) {
     const wrapper = document.createElement('div');
     wrapper.style.marginBottom = '14px';
@@ -435,13 +435,11 @@ function criarMod5() {
     return div;
 }
 
-// ========= MÓDULO 6 - 1º PELOTÃO (GUARDA/MEIOS) - MODIFICADO =========
 function criarMod6() {
     const div = document.createElement('div');
     div.className = 'section-card';
     div.appendChild(campoData('DATA', 'm6_data'));
     div.appendChild(campoHora('HORÁRIO', 'm6_horaIni'));
-    // ADICIONANDO ESPAÇO VISUAL (margem extra)
     const spacer = document.createElement('div');
     spacer.style.marginBottom = '8px';
     div.appendChild(spacer);
@@ -570,14 +568,12 @@ function enviarModulo(modId) {
     const modulo = modulos.find(m => m.id === modId);
     relatorio += `*${modulo.nome}*\n\n`;
 
-    // Função auxiliar para adicionar campo apenas se preenchido
     function addCampo(label, valor) {
         if (valor && valor.trim() !== '') {
             relatorio += `*${label}*: ${valor.trim()}\n`;
         }
     }
 
-    // Função auxiliar para adicionar lista apenas se tiver itens
     function addLista(label, listId) {
         const itens = getNames(listId);
         if (itens && itens.trim() !== '') {
@@ -592,7 +588,6 @@ function enviarModulo(modId) {
         }
     }
 
-    // Função auxiliar para adicionar lista de pares (permutas, etc)
     function addListaPares(label, listId) {
         const itens = getPairs(listId);
         if (itens && itens.trim() !== '') {
@@ -607,7 +602,6 @@ function enviarModulo(modId) {
         }
     }
 
-    // Função auxiliar para adicionar lista de escolta (3 campos)
     function addListaEscolta(label, listId) {
         const list = document.getElementById(listId);
         if (!list) return;
@@ -623,7 +617,6 @@ function enviarModulo(modId) {
         relatorio += `\n`;
     }
 
-    // Coletar campos na ordem correta para cada módulo
     if (modId === 'mod1') {
         addCampo('COORDENADOR DE SERVIÇO', document.getElementById('m1_coordenador')?.value);
         addCampo('TELEFONE', document.getElementById('m1_telefone')?.value);
@@ -805,7 +798,6 @@ function voltarInicio() {
 if (window.navigator.standalone) {
     document.getElementById('installBanner').style.display = 'none';
 } else {
-    // Mostrar banner apenas em iOS
     const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
     if (isIOS) {
         document.getElementById('installBanner').style.display = 'block';
