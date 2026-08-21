@@ -32,76 +32,57 @@ body {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-/* ===== ESCUDO CSS ===== */
-.escudo-container {
+/* ===== ESCUDO SIMPLES ===== */
+.escudo-simples {
     flex-shrink: 0;
-    width: 70px;
-    height: 70px;
-    position: relative;
-}
-
-.escudo-css {
-    width: 100%;
-    height: 100%;
+    width: 65px;
+    height: 65px;
     background: #f5efe6;
     border-radius: 50%;
     border: 3px solid #d4b48c;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 6px 4px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    position: relative;
-    overflow: hidden;
 }
 
-/* Estrela no topo do escudo */
-.escudo-css::before {
-    content: "★";
-    position: absolute;
-    top: 2px;
-    font-size: 0.5rem;
-    color: #7b5a3b;
-    opacity: 0.6;
+.escudo-texto {
+    text-align: center;
+    line-height: 1.1;
+    padding: 4px;
 }
 
-.escudo-linha {
+.escudo-texto .linha1 {
     display: block;
     font-size: 0.45rem;
     font-weight: 700;
     color: #4d3522;
-    line-height: 1.1;
-    text-align: center;
     letter-spacing: 0.3px;
 }
 
-.escudo-divisor {
-    width: 70%;
-    height: 1px;
-    background: #d4b48c;
-    margin: 1px auto;
+.escudo-texto .linha2 {
+    display: block;
+    font-size: 0.55rem;
+    font-weight: 700;
+    color: #4d3522;
+    letter-spacing: 0.5px;
 }
 
-.escudo-meio {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1px;
-}
-
-.escudo-pmba {
-    font-size: 0.65rem;
+.escudo-texto .linha3 {
+    display: block;
+    font-size: 0.7rem;
     font-weight: 800;
     color: #7b5a3b;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     background: #e8dbce;
+    border-radius: 3px;
     padding: 0 4px;
-    border-radius: 2px;
+    margin: 1px 0;
 }
 
-.escudo-cidade {
-    font-size: 0.4rem;
+.escudo-texto .linha4 {
+    display: block;
+    font-size: 0.35rem;
     font-weight: 600;
     color: #5a3d28;
     letter-spacing: 0.2px;
@@ -370,19 +351,21 @@ body {
 }
 
 @media (max-width: 500px) {
-    .escudo-container { width: 55px; height: 55px; }
-    .escudo-linha { font-size: 0.38rem; }
-    .escudo-pmba { font-size: 0.55rem; }
-    .escudo-cidade { font-size: 0.32rem; }
+    .escudo-simples { width: 55px; height: 55px; }
+    .escudo-texto .linha1 { font-size: 0.38rem; }
+    .escudo-texto .linha2 { font-size: 0.45rem; }
+    .escudo-texto .linha3 { font-size: 0.6rem; }
+    .escudo-texto .linha4 { font-size: 0.3rem; }
     .title-group h1 { font-size: 1rem; }
     .title-group small { font-size: 0.6rem; }
 }
 
 @media (max-width: 400px) {
-    .escudo-container { width: 48px; height: 48px; }
-    .escudo-linha { font-size: 0.32rem; }
-    .escudo-pmba { font-size: 0.45rem; }
-    .escudo-cidade { font-size: 0.28rem; }
+    .escudo-simples { width: 48px; height: 48px; }
+    .escudo-texto .linha1 { font-size: 0.3rem; }
+    .escudo-texto .linha2 { font-size: 0.38rem; }
+    .escudo-texto .linha3 { font-size: 0.5rem; }
+    .escudo-texto .linha4 { font-size: 0.25rem; }
     .header-pm { padding: 8px 12px; gap: 8px; }
     .title-group h1 { font-size: 0.85rem; }
     .badge-online { font-size: 0.55rem; padding: 2px 10px; }
