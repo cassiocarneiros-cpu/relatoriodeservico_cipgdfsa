@@ -419,9 +419,12 @@ function criarMod4() {
     return div;
 }
 
+// ========= MÓDULO 5 - OCORRÊNCIA (MODIFICADO) =========
 function criarMod5() {
     const div = document.createElement('div');
     div.className = 'section-card';
+    // ADICIONADO CAMPO OPERAÇÃO AQUI
+    div.appendChild(campo('OPERAÇÃO', 'm5_operacao'));
     div.appendChild(campo('TIPO DE OCORRÊNCIA', 'm5_tipo'));
     div.appendChild(campoData('DATA', 'm5_data'));
     div.appendChild(campoHora('HORÁRIO', 'm5_hora'));
@@ -694,6 +697,8 @@ function enviarModulo(modId) {
         addListaEscolta('ESCOLTADOS', 'm4_escoltaList');
         addCampo('OBSERVAÇÃO', document.getElementById('m4_obs')?.value);
     } else if (modId === 'mod5') {
+        // ADICIONADO CAMPO OPERAÇÃO AQUI
+        addCampo('OPERAÇÃO', document.getElementById('m5_operacao')?.value);
         addCampo('TIPO DE OCORRÊNCIA', document.getElementById('m5_tipo')?.value);
         addCampo('DATA', document.getElementById('m5_data')?.value);
         addCampo('HORÁRIO', document.getElementById('m5_hora')?.value);
