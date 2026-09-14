@@ -574,7 +574,11 @@ function criarMod13() {
 function enviarModulo(modId) {
     let relatorio = `*POLICIA MILITAR DA BAHIA*\n*CPR-LESTE*\n*Região Maria Quitéria*\n*UOPM: CIPGd-FEIRA DE SANTANA*\n\n`;
     const modulo = modulos.find(m => m.id === modId);
-    relatorio += `*${modulo.nome}*\n\n`;
+    
+    // ===== ALTERAÇÃO: TÍTULO DO MÓDULO REMOVIDO PARA mod1 e mod2 =====
+    if (modId !== 'mod1' && modId !== 'mod2') {
+        relatorio += `*${modulo.nome}*\n\n`;
+    }
 
     // Função auxiliar para adicionar campo apenas se preenchido
     function addCampo(label, valor) {
