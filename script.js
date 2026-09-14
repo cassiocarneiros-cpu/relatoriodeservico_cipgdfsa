@@ -339,6 +339,7 @@ function getPairs(listId) {
 
 // ========= CRIAÇÃO DOS 13 MÓDULOS =========
 
+// ========= MÓDULO 1 - COORDENADOR DE SERVIÇO (MODIFICADO) =========
 function criarMod1() {
     const div = document.createElement('div');
     div.className = 'section-card';
@@ -351,18 +352,25 @@ function criarMod1() {
     div.appendChild(campo('SALA DE MEIOS', 'm1_salaMeios'));
     div.appendChild(campo('MOTORISTA', 'm1_motorista'));
     div.appendChild(criarListaNome('RECEPÇÃO', 'm1_recepcaoList', 'm1_recepcaoInput'));
-    div.appendChild(campo('VTR', 'm1_vtr'));
+    // ALTERADO: VTR agora é VTR (PREFIXO)
+    div.appendChild(campo('VTR (PREFIXO)', 'm1_vtr'));
     div.appendChild(campoNumero('QTD DE PM\'S NA VTR', 'm1_qtdPmVtr'));
     div.appendChild(campoNumero('HGCA QTD PM\'S 7H-19H', 'm1_hgcaDia'));
     div.appendChild(campoNumero('HGCA QTD PM\'S 19H-7H', 'm1_hgcaNoite'));
     div.appendChild(campoNumero('ESCOLTA QTD PM\'S', 'm1_escolta'));
-    div.appendChild(campo('GIRP VTR', 'm1_girpVtr'));
+    // ALTERADO: GIRP VTR agora é GIRP VTR (PREFIXO)
+    div.appendChild(campo('GIRP VTR (PREFIXO)', 'm1_girpVtr'));
     div.appendChild(campoNumero('GIRP QTD PM\'S', 'm1_girpQtd'));
-    div.appendChild(campo('MOTOS VTR', 'm1_motoVtr'));
+    // ALTERADO: MOTOS VTR agora é MOTOS VTR (PREFIXO)
+    div.appendChild(campo('MOTOS VTR (PREFIXO)', 'm1_motoVtr'));
     div.appendChild(campoNumero('MOTOCICLISTAS QTD PM\'S', 'm1_motoQtd'));
-    div.appendChild(campoNumero('VTR 4 RODAS', 'm1_vtr4'));
-    div.appendChild(campoNumero('VTR 2 RODAS', 'm1_vtr2'));
+    // ALTERADO: VTR 4 RODAS agora é VTR 4 RODAS (QTD)
+    div.appendChild(campoNumero('VTR 4 RODAS (QTD)', 'm1_vtr4'));
+    // ALTERADO: VTR 2 RODAS agora é VTR 2 RODAS (QTD)
+    div.appendChild(campoNumero('VTR 2 RODAS (QTD)', 'm1_vtr2'));
     div.appendChild(campoNumero('TOTAL POLICIAIS', 'm1_total'));
+    // ADICIONADO: TOTAL DE POLICIAIS 24h
+    div.appendChild(campoNumero('TOTAL DE POLICIAIS 24h', 'm1_total24h'));
     div.appendChild(campo('OBSERVAÇÃO', 'm1_obs', 'textarea'));
     return div;
 }
@@ -647,18 +655,25 @@ function enviarModulo(modId) {
         addCampo('SALA DE MEIOS', document.getElementById('m1_salaMeios')?.value);
         addCampo('MOTORISTA', document.getElementById('m1_motorista')?.value);
         addLista('RECEPÇÃO', 'm1_recepcaoList');
-        addCampo('VTR', document.getElementById('m1_vtr')?.value);
+        // ALTERADO: VTR (PREFIXO)
+        addCampo('VTR (PREFIXO)', document.getElementById('m1_vtr')?.value);
         addCampo('QTD DE PM\'S NA VTR', document.getElementById('m1_qtdPmVtr')?.value);
         addCampo('HGCA QTD PM\'S 7H-19H', document.getElementById('m1_hgcaDia')?.value);
         addCampo('HGCA QTD PM\'S 19H-7H', document.getElementById('m1_hgcaNoite')?.value);
         addCampo('ESCOLTA QTD PM\'S', document.getElementById('m1_escolta')?.value);
-        addCampo('GIRP VTR', document.getElementById('m1_girpVtr')?.value);
+        // ALTERADO: GIRP VTR (PREFIXO)
+        addCampo('GIRP VTR (PREFIXO)', document.getElementById('m1_girpVtr')?.value);
         addCampo('GIRP QTD PM\'S', document.getElementById('m1_girpQtd')?.value);
-        addCampo('MOTOS VTR', document.getElementById('m1_motoVtr')?.value);
+        // ALTERADO: MOTOS VTR (PREFIXO)
+        addCampo('MOTOS VTR (PREFIXO)', document.getElementById('m1_motoVtr')?.value);
         addCampo('MOTOCICLISTAS QTD PM\'S', document.getElementById('m1_motoQtd')?.value);
-        addCampo('VTR 4 RODAS', document.getElementById('m1_vtr4')?.value);
-        addCampo('VTR 2 RODAS', document.getElementById('m1_vtr2')?.value);
+        // ALTERADO: VTR 4 RODAS (QTD)
+        addCampo('VTR 4 RODAS (QTD)', document.getElementById('m1_vtr4')?.value);
+        // ALTERADO: VTR 2 RODAS (QTD)
+        addCampo('VTR 2 RODAS (QTD)', document.getElementById('m1_vtr2')?.value);
         addCampo('TOTAL POLICIAIS', document.getElementById('m1_total')?.value);
+        // ADICIONADO: TOTAL DE POLICIAIS 24h
+        addCampo('TOTAL DE POLICIAIS 24h', document.getElementById('m1_total24h')?.value);
         addCampo('OBSERVAÇÃO', document.getElementById('m1_obs')?.value);
     } else if (modId === 'mod2') {
         addCampo('EVENTO', document.getElementById('m2_tipo')?.value);
