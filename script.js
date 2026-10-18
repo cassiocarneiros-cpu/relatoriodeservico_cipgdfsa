@@ -29,27 +29,29 @@ const modulos = [
 
 // Renderizar grid
 const grid = document.getElementById('moduleGrid');
-modulos.forEach(mod => {
-    const card = document.createElement('div');
-    card.className = 'module-card';
-    card.innerHTML = `
-        <i class="fas ${mod.icone}"></i>
-        <div class="info"><h3>${mod.nome}</h3><p>Clique para preencher</p></div>
-        <i class="fas fa-chevron-right arrow"></i>
-    `;
-    card.onclick = () => abrirModulo(mod.id);
-    grid.appendChild(card);
-});
+if (grid) {
+    modulos.forEach(mod => {
+        const card = document.createElement('div');
+        card.className = 'module-card';
+        card.innerHTML = `
+            <i class="fas ${mod.icone}"></i>
+            <div class="info"><h3>${mod.nome}</h3><p>Clique para preencher</p></div>
+            <i class="fas fa-chevron-right arrow"></i>
+        `;
+        card.onclick = () => abrirModulo(mod.id);
+        grid.appendChild(card);
+    });
+}
 
 // ========= ABRIR MÓDULO =========
 function abrirModulo(modId) {
     // --- REDIRECIONAMENTO PARA OS CHECKLISTS ---
     if (modId === 'checklist4') {
-        window.location.href = 'checklist-4rodas.html';
+        window.location.href = './checklist-4rodas.html';
         return;
     }
     if (modId === 'checklist2') {
-        window.location.href = 'checklist-2rodas.html';
+        window.location.href = './checklist-2rodas.html';
         return;
     }
     // -------------------------------------------
@@ -57,6 +59,7 @@ function abrirModulo(modId) {
     document.getElementById('telaInicial').classList.add('hidden');
     document.getElementById('telaFormulario').classList.remove('hidden');
     const container = document.getElementById('formularioContainer');
+    if (!container) return;
     container.innerHTML = '';
 
     const modulo = modulos.find(m => m.id === modId);
@@ -111,7 +114,6 @@ function campoNumero(label, id) {
     return campo(label, id, 'number', '0', ''); 
 }
 
-// Lista simples de nomes
 function criarListaNome(label, listId, inputId) {
     const wrapper = document.createElement('div');
     wrapper.style.marginBottom = '14px';
@@ -145,7 +147,6 @@ function criarListaNome(label, listId, inputId) {
     return wrapper;
 }
 
-// Lista com par Substituto + Substituído
 function criarListaPermuta(label, listId, subInputId, subdoInputId) {
     const wrapper = document.createElement('div');
     wrapper.style.marginBottom = '14px';
@@ -191,7 +192,6 @@ function criarListaPermuta(label, listId, subInputId, subdoInputId) {
     return wrapper;
 }
 
-// Lista para escolta emergência (Nome, Situação, Local)
 function criarListaEscolta(label, listId, nomeId, sitId, localId) {
     const wrapper = document.createElement('div');
     wrapper.style.marginBottom = '14px';
@@ -244,7 +244,6 @@ function criarListaEscolta(label, listId, nomeId, sitId, localId) {
     return wrapper;
 }
 
-// Lista para ocorrência (Nome, RG/CPF)
 function criarListaOcorrencia(label, listId, nomeId, rgId) {
     const wrapper = document.createElement('div');
     wrapper.style.marginBottom = '14px';
@@ -290,7 +289,6 @@ function criarListaOcorrencia(label, listId, nomeId, rgId) {
     return wrapper;
 }
 
-// Funções para adicionar itens
 function addNameToList(listId, inputId) {
     const list = document.getElementById(listId);
     const input = document.getElementById(inputId);
@@ -369,7 +367,6 @@ function getPairs(listId) {
         .map(el => el.textContent.replace('✕', '').trim()).join('; ');
 }
 
-// ========= CRIAÇÃO DOS MÓDULOS =========
 function criarMod1() {
     const div = document.createElement('div');
     div.className = 'section-card';
@@ -627,7 +624,6 @@ function criarMod14() {
     return div;
 }
 
-// ========= FUNÇÕES DO META AI (MÓDULO 5) =========
 function copiarResumoParaMetaAI() {
     const resumoInput = document.getElementById('m5_resumo');
     if (!resumoInput || resumoInput.value.trim() === '') {
@@ -656,7 +652,6 @@ function substituirResumoMelhorado() {
     }
 }
 
-// ========= ENVIAR MÓDULO =========
 function enviarModulo(modId) {
     let relatorio = `*POLICIA MILITAR DA BAHIA*\n*CPR-LESTE*\n*Região Maria Quitéria*\n*UOPM: CIPGd-FEIRA DE SANTANA*\n\n`;
     const modulo = modulos.find(m => m.id === modId);
@@ -898,13 +893,11 @@ function enviarModulo(modId) {
     }
 }
 
-// ========= VOLTAR =========
 function voltarInicio() {
     document.getElementById('telaInicial').classList.remove('hidden');
     document.getElementById('telaFormulario').classList.add('hidden');
 }
 
-// ========= DETECTAR INSTALAÇÃO =========
 if (window.navigator.standalone) {
     document.getElementById('installBanner').style.display = 'none';
 } else {
