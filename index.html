@@ -6,15 +6,44 @@
     <title>CIPGd-FSA · Módulos de Relatórios</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    
-    <!-- Configurações base para os Checklists -->
-    <script src="config.js"></script>
-    <script src="offline-queue.js"></script>
-
     <meta name="theme-color" content="#7b5a3b">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="apple-touch-icon" href="icon-192.png">
+    
+    <style>
+        /* Estilo para o container do iframe ocupar a tela toda quando aberto */
+        #iframeContainer {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #0a0f1e;
+            z-index: 9999;
+            display: none;
+            flex-direction: column;
+        }
+        #iframeContainer iframe {
+            flex: 1;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        #iframeHeader {
+            background: #161d30;
+            padding: 10px;
+            display: flex;
+            justify-content: flex-start;
+            border-bottom: 1px solid #1f2d47;
+        }
+        #iframeHeader button {
+            background: transparent;
+            border: 1px solid #e8b834;
+            color: #e8b834;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 <div class="app-container" id="app">
@@ -56,6 +85,14 @@
     </div>
 
     <div class="copy-warning"><i class="fas fa-info-circle"></i> Cada tópico é independente. Preencha e envie via WhatsApp.</div>
+</div>
+
+<!-- CONTAINER DO IFRAME (CHECKLISTS) -->
+<div id="iframeContainer">
+    <div id="iframeHeader">
+        <button onclick="fecharChecklist()"><i class="fas fa-arrow-left"></i> Voltar aos Relatórios</button>
+    </div>
+    <iframe id="iframeChecklist" src="about:blank"></iframe>
 </div>
 
 <script src="script.js"></script>
