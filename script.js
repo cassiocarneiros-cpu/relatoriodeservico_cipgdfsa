@@ -43,15 +43,30 @@ if (grid) {
     });
 }
 
+// ========= CONTROLE DO IFRAME =========
+function abrirChecklist(url) {
+    const container = document.getElementById('iframeContainer');
+    const iframe = document.getElementById('iframeChecklist');
+    iframe.src = url;
+    container.style.display = 'flex';
+}
+
+function fecharChecklist() {
+    const container = document.getElementById('iframeContainer');
+    const iframe = document.getElementById('iframeChecklist');
+    iframe.src = 'about:blank'; // Limpa o iframe para parar scripts
+    container.style.display = 'none';
+}
+
 // ========= ABRIR MÓDULO =========
 function abrirModulo(modId) {
-    // --- REDIRECIONAMENTO PARA OS CHECKLISTS ---
+    // --- ABRE O IFRAME PARA OS CHECKLISTS ---
     if (modId === 'checklist4') {
-        window.location.href = './checklist-4rodas.html';
+        abrirChecklist('./checklist-4rodas.html');
         return;
     }
     if (modId === 'checklist2') {
-        window.location.href = './checklist-2rodas.html';
+        abrirChecklist('./checklist-2rodas.html');
         return;
     }
     // -------------------------------------------
